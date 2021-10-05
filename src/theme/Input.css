@@ -1,0 +1,12 @@
+.Input {
+    color: #1a73e8;
+    min-width: 250px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+
+}
+
+.Input :focus {
+    outline: 3px solid #1a73e8;
+}
