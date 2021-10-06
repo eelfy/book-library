@@ -4,7 +4,6 @@ import Card from './Card';
 import HeaderState from '../state/header'
 import { observer } from "mobx-react-lite";
 import Button from './Button';
-import Loader from './Loader';
 
 const Library = observer((props) => {
     console.log(HeaderState.books)

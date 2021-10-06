@@ -5,8 +5,6 @@ import Counter from '../components/Counter';
 import Library from '../components/Library';
 import HeaderState from '../state/header'
 import { observer } from "mobx-react-lite";
-
-import { withRouter } from 'react-router';
 import Loader from '../components/Loader';
 
 const Main = observer(() => {

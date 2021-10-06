@@ -1,12 +1,9 @@
 import './theme/App.css';
-import Header from './components/Header';
 import React, { Component } from 'react'
-import Counter from './components/Counter';
 import Main from './screens/Main.screen';
 import Detail from './screens/Detail.screen';
 import { withRouter } from 'react-router';
-import HeaderState from './state/header'
-import { Provider } from 'mobx-react'
+
 
 import {
   Switch,

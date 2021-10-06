@@ -31,7 +31,6 @@ class HeaderState {
             })
     }
     fetchBooks(event) {
-        debugger
         this.q = null
         if (this.q === null) this.q = this.formBody['search'].replace(/\s+/g, ' ').trim().split(' ').join('+')
         if (this.q !== '') {
