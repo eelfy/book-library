@@ -7,7 +7,7 @@ class HeaderState {
     books = []
     page = 0
     apiStartLink = 'https://www.googleapis.com/books/v1/volumes'
-    apiKey = '*'
+    apiKey = 'AIzaSyC71LCfxix0kvDmZaZGsc6i5KR1FWR9pi8'
     q = null
     totalBooks = null
     formBody = null
