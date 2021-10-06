@@ -14,7 +14,7 @@ class DetailState {
 }
 
 const Detail = observer((props) => {
-    debugger
+
     let { id } = useParams();
     const debugg = e => {
     }
@@ -28,7 +28,7 @@ const Detail = observer((props) => {
                     <span>{book.volumeInfo.categories && book.volumeInfo.categories.join(', ')}</span>
                     <span>{book.volumeInfo.authors && book.volumeInfo.authors.join(', ')}</span>
                     <div className='detailDescriptionBody'>
-                        <div className='detailImgBody'>{book && <img alt='bookimg' className='detailImg' src={book.volumeInfo.imageLinks.пше}></img>}</div>
+                        <div className='detailImgBody'>{book.volumeInfo.imageLinks && <img alt='bookimg' className='detailImg' src={book.volumeInfo.imageLinks.large}></img>}</div>
                         <div className='detailDescription'>
                             <p>{book.volumeInfo.description}</p>
                         </div>

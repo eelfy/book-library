@@ -21,7 +21,7 @@ const Card = observer((props) => {
                 <div className='cardDescription'>
                     <h3>{props.title}</h3>
                     <p>{props.categories}</p>
-                    {props.authors && props.authors.join(', ')}
+                    <div className='cardAuthors'>{props.authors && props.authors.join(', ')}</div>
                 </div>
             </Link>
         </div >

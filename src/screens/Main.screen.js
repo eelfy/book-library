@@ -3,16 +3,22 @@ import React from 'react';
 import Header from '../components/Header';
 import Counter from '../components/Counter';
 import Library from '../components/Library';
-import { withRouter } from 'react-router';
+import HeaderState from '../state/header'
+import { observer } from "mobx-react-lite";
 
-function Main() {
+import { withRouter } from 'react-router';
+import Loader from '../components/Loader';
+
+const Main = observer(() => {
+
     return (
         <div className="Main">
             <Header />
-            <Counter />
-            <Library />
+            {HeaderState.books.length > 0 ? <Counter /> : null}
+            {HeaderState.books.length > 0 ? <Library /> : null}
+            {HeaderState.loader === true ? <Loader /> : null}
         </div>
     );
-}
+})
 
 export default Main;

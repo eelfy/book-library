@@ -5,9 +5,10 @@ class HeaderState {
         makeAutoObservable(this)
     }
     books = []
+    loadedBooks = 0
     page = 0
     apiStartLink = 'https://www.googleapis.com/books/v1/volumes'
-    apiKey = 'AIzaSyC71LCfxix0kvDmZaZGsc6i5KR1FWR9pi8'
+    APIKEY = 'AIzaSyC71LCfxix0kvDmZaZGsc6i5KR1FWR9pi8'
     q = null
     totalBooks = null
     formBody = null
@@ -17,48 +18,53 @@ class HeaderState {
     loader = false
     bookNotFound = null
     getBook(bookId) {
-        debugger
+
         fetch(`${this.apiStartLink}/${bookId}`)
             .then(response => {
-                debugger
+
                 return response.json()
             })
             .then(json => {
-                debugger
+
                 this.book = json
                 this.bookNotFound = null
             })
     }
     fetchBooks(event) {
         debugger
+        this.q = null
         if (this.q === null) this.q = this.formBody['search'].replace(/\s+/g, ' ').trim().split(' ').join('+')
-        if (this.q !== '') this.fetchFunck('get')
+        if (this.q !== '') {
+            this.books = []
+            this.page = 0
+            this.fetchFunck('get')
+        }
         if (this.loadMoreVisible === false) this.loadMoreVisible = true
     }
     loadMoreBooks(event) {
-        debugger
         if (this.q !== '') event.preventDefault()
         this.fetchFunck('load')
     }
     fetchFunck(type) {
-        debugger
+
         this.loader = true
-        fetch(`${this.apiStartLink}?q=${this.q}&maxResults=30&startIndex=${this.page * 30}&subject=${this.formBody.category}&orderBy=${this.formBody.sorting}&key=${this.apiKey}`)
+        fetch(`${this.apiStartLink}?q=${this.q}&maxResults=30&startIndex=${this.loadedBooks}&subject=${this.formBody.category}&orderBy=${this.formBody.sorting}&key=${this.APIKEY}`)
             .then(response => {
-                debugger
+
                 return response.json()
             })
             .then(json => {
-                debugger
+
                 if (json.items) {
-                    this.totalBooks = json.totalItems
                     if (type === 'load') {
                         this.books = [...this.books, ...json.items]
                     } else {
+                        this.totalBooks = json.totalItems
                         this.books = json.items
+                        this.loadedBooks = 0
                     }
+                    this.loadedBooks += json.items.length
                     this.notFound = null
-                    this.page++
                 } else {
                     this.notFound = "Ничего не найдено"
                 }
