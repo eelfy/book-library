@@ -6,13 +6,6 @@ import { observer } from "mobx-react-lite";
 import { makeAutoObservable } from "mobx";
 import Loader from '../components/Loader';
 
-class DetailState {
-    constructor() {
-        makeAutoObservable(this)
-    }
-    hm = 'hm'
-}
-
 const Detail = observer((props) => {
 
     let { id } = useParams();
